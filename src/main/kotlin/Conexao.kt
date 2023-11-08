@@ -11,9 +11,5 @@ class Conexao {
         dataSource.username = "testes"
         dataSource.password = "12345678"
         return JdbcTemplate(dataSource)
-        val bd = JdbcTemplate(dataSource)
-
-
-
     }
 }

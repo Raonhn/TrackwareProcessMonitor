@@ -18,12 +18,12 @@ fun api(){
         if (it.nome.lowercase() == "idea64") {
             println(
                 """
-                              Nome: ${it.nome}
-                              Pid: ${it.pid}
-                              CPU utilizada: ${"%.1f".format(it.usoCpu)}%
-                              Memoria usada: ${it.bytesUtilizados/1024/1024} MB
-                              
-                              """.trimIndent()
+                  Nome: ${it.nome}
+                  Pid: ${it.pid}
+                  CPU utilizada: ${"%.1f".format(it.usoCpu)}%
+                  Memoria usada: ${it.bytesUtilizados/1024/1024} MB
+                  
+                """.trimIndent()
             )
 
         }
