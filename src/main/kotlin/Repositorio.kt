@@ -28,11 +28,11 @@ class Repositorio {
         )
         return user
     }
-    fun ocorrencia(dado:String ,pc:Computador){
+    fun ocorrencia(dado:String ,pc:Computador, mem:Double){
         bd.update(
             """
-            insert into ocorrencias(fkProcesso,fkDispositivo) values
-            ((select idProcesso from processosBloqueados where nome = "$dado"), ${pc.idDispositivo})
+            insert into ocorrencia(fkProcesso,fkDispositivo, memoria) values
+            ((select idProcesso from processosBloqueados where nome = "$dado"), ${pc.idDispositivo}, $mem)
             """
         )
 

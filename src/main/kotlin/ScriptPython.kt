@@ -15,8 +15,8 @@ object ScriptPython {
 
             val python = """
         import psutil
-        cpu = psutil.cpu_percent()
-        print(cpu)
+        mem = psutil.virtual_memory()[2]
+        print(mem)
     """.trimIndent()
 
             val nomeArquivoPython = "individualPython.py"
