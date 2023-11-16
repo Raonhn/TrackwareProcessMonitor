@@ -29,15 +29,24 @@ class Repositorio {
         return user
     }
     fun ocorrencia(dado:String ,pc:Computador){
-        val AppAberto = bd.queryForObject(
-            """
-                select idProcesso from processosBloqueados where nome = '$dado' and fkEmpresa = ${pc.fkempresa}
-                """, Int::class.java)
         bd.update(
             """
             insert into ocorrencias(fkProcesso,fkDispositivo) values
-            ($AppAberto, ${pc.idDispositivo})
+            ((select idProcesso from processosBloqueados where nome = "$dado"), ${pc.idDispositivo})
             """
         )
+
+    }
+    fun processosBloqueados(pc: Computador): List<String> {
+        var processos = mutableListOf<String>()
+        val proc = bd.query(
+            """
+                select * from processosBloqueados where fkEmpresa = ${pc.fkempresa}
+                """, BeanPropertyRowMapper(Processo::class.java)
+        )
+        proc.forEach {
+            processos += it.nome
+        }
+        return processos
     }
 }
