@@ -2,7 +2,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.concurrent.thread
 
-fun isProcessRunning(nomeProcesso: String): Boolean {
+fun existe(nomeProcesso: String): Boolean {
     val process = Runtime.getRuntime().exec("tasklist")
     val reader = BufferedReader(InputStreamReader(process.inputStream))
     var ocorrencia = false
@@ -20,11 +20,9 @@ fun killProcess(processName: String) {
 
 fun encerrar(processo:String) {
 
-    if (isProcessRunning(processo)) {
+    if (existe(processo)) {
 
         killProcess(processo)
-
-        //Runtime.getRuntime().exec("py pythonIndividual.py")
     }
     Thread.sleep(2000)
 }
