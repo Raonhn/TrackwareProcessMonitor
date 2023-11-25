@@ -14,15 +14,23 @@ fun existe(nomeProcesso: String): Boolean {
     return ocorrencia
 }
 
-fun killProcess(processName: String) {
-    Runtime.getRuntime().exec("taskkill /F /IM $processName")
+fun killProcess(processName: String, so:String) {
+    if(so == "Windows") {
+        Runtime.getRuntime().exec("taskkill /F /IM $processName")
+    }else{
+        try{
+            Runtime.getRuntime().exec("kill -7 $processName")
+        } catch(exception:Exception){
+            println("Não tenho suporte para esse sistema operacional")
+        }
+    }
 }
 
-fun encerrar(processo:String) {
+fun encerrar(processo:String, so:String) {
 
     if (existe(processo)) {
 
-        killProcess(processo)
+        killProcess(processo, so)
     }
     Thread.sleep(2000)
 }

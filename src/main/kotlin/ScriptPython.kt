@@ -6,17 +6,14 @@ object ScriptPython {
 
         var PythonExe: List<Process> = listOf()
 
-//        val host = "localhost"
-//        val user = "testes"
-//        val passwd = "12345678"
-//        val database = "trackware"
-
         fun criarPython():  String {
 
             val python = """
-        import psutil
-        mem = psutil.virtual_memory()[2]
-        print(mem)
+            import psutil
+            usada = psutil.virtual_memory().used
+            total = psutil.virtual_memory().total
+            mem = (usada / total) * 100
+            print(mem)
     """.trimIndent()
 
             val nomeArquivoPython = "individualPython.py"

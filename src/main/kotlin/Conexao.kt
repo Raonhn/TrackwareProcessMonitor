@@ -2,14 +2,33 @@ import org.apache.commons.dbcp2.BasicDataSource
 import org.springframework.jdbc.core.JdbcTemplate
 
 class Conexao {
+    var serverName = "localhost"
+    var mydatabase = "trackware"
+    var username = "testes"
+    var password = "12345678"
+    lateinit var bd:JdbcTemplate
     fun conectar(): JdbcTemplate {
         val dataSource = BasicDataSource()
         dataSource.driverClassName = "com.mysql.cj.jdbc.Driver"
-        val serverName = "localhost"
-        val mydatabase = "trackware"
+        val serverName = this.serverName
+        val mydatabase = this.mydatabase
         dataSource.url = "jdbc:mysql://$serverName/$mydatabase"
-        dataSource.username = "testes"
-        dataSource.password = "12345678"
-        return JdbcTemplate(dataSource)
+        dataSource.username = this.username
+        dataSource.password = this.password
+        bd = JdbcTemplate(dataSource)
+        return bd
+    }
+
+    fun criarTabela(){
+        bd.execute("""       
+        CREATE TABLE IF NOT EXIST create table ocorrencias(
+            idOcorrencias int primary key auto_increment,
+            fkProcesso int,
+            fkDispositivo int,
+            foreign key (fkDispositivo) references dispositivo(idDispositivo),
+            memoria float,
+            dtHora datetime default current_timestamp
+        );
+    """)
     }
 }

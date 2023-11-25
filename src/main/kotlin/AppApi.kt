@@ -5,37 +5,39 @@ fun api() {
     val arquivo = ScriptPython.criarPython()
     val bd = Repositorio()
     bd.iniciar()
-    val ip = looca.rede.parametros.hostName
-    val comp: List<Computador> = bd.computador(ip)
+    val mac = getMac()
+    val comp: List<Computador> = bd.computador(mac)
     val pc = comp[0]
     val processosBloqueados = bd.processosBloqueados(pc)
+    val so = looca.sistema.sistemaOperacional
+    println(so)
 
     while (true) {
-//        val processos = looca.grupoDeProcessos.processos
-        val janela = looca.grupoDeJanelas.janelas
+        if (so == "Windows") {
+            val janela = looca.grupoDeJanelas.janelas
 
-        processosBloqueados.forEach { process ->
-            janela.forEach {
-                if (it.titulo.lowercase().contains(process)) {
-                    println(it)
-                    val respostaMem = ScriptPython.executarScript(arquivo)
-                    encerrar(it.pid.toString())
-                    bd.ocorrencia(process, pc, respostaMem)
+            processosBloqueados.forEach { process ->
+                janela.forEach {
+                    if (it.titulo.lowercase().contains(process)) {
+                        println(it)
+                        val respostaMem = ScriptPython.executarScript(arquivo)
+                        encerrar(it.pid.toString(), so)
+                        bd.ocorrencia(process, pc, respostaMem)
+                    }
                 }
             }
-//        processos.forEach {
-//            if (it.nome.lowercase() == process) {
-//                println(
-//                    """
-//                  Nome: ${it.nome}
-//                  Pid: ${it.pid}
-//                  CPU utilizada: ${"%.1f".format(it.usoCpu)}%
-//                  Memoria usada: ${it.bytesUtilizados / 1024 / 1024} MB
-//
-//                """.trimIndent()
-//                )
-//            }
-//        }
+        }else {
+            val processos = looca.grupoDeProcessos.processos
+            processosBloqueados.forEach { process ->
+                processos.forEach {
+                    if (it.nome.lowercase() == process) {
+                        println(it)
+                        val respostaMem = ScriptPython.executarScript(arquivo)
+                        encerrar(it.pid.toString(), so)
+                        bd.ocorrencia(process, pc, respostaMem)
+                    }
+                }
+            }
         }
     }
 }

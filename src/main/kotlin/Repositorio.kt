@@ -3,49 +3,85 @@ import org.springframework.jdbc.core.JdbcTemplate
 
 class Repositorio {
     lateinit var bd: JdbcTemplate
+    lateinit var server: JdbcTemplate
 
     fun iniciar(){
         bd = Conexao().conectar()
+        server = SQLserver().conectar()
     }
     fun computador(ip:String):List<Computador>{
-        val comp:List<Computador> = bd.query("""
+        try {
+            val comp: List<Computador> = server.query(
+                """
             select * from dispositivo
-                where ip = '$ip'    
+                where ip = '$ip' 
         """,
-            BeanPropertyRowMapper(Computador::class.java)
-        )
-        return comp
+                BeanPropertyRowMapper(Computador::class.java)
+            )
+            return comp
+        } catch(exception:Exception){
+            val comp: List<Computador> = bd.query(
+                """
+            select * from dispositivo
+                where ip = '$ip' 
+        """,
+                BeanPropertyRowMapper(Computador::class.java)
+            )
+            return comp
+        }
     }
     fun usuarios(pc: Computador):List<Usuario>{
-        val user:List<Usuario> = bd.query("""
+        try {
+            return bd.query(
+                """
             select idUsuario, u.nome, email_Corporativo as email, senha, c.nome as cargo from usuario as u
 	            join empresa on u.fkEmpresa = idEmpresa 
 		            join dispositivo as d on d.fkEmpresa = idEmpresa
                         join cargo as c on fkCargo = idCargo
 			                where u.fkEmpresa = ${pc.fkempresa};
         """,
-            BeanPropertyRowMapper(Usuario::class.java)
-        )
-        return user
+                BeanPropertyRowMapper(Usuario::class.java)
+            )
+        } catch (exception: Exception) {
+            val ADM = Usuario()
+            ADM.email = "admuser000@permit.config"
+            ADM.senha = "0000"
+            ADM.cargo = "Gerenciador de Sistema para login offline"
+            ADM.idUsuario = 0
+            return mutableListOf(ADM)
+        }
     }
     fun ocorrencia(dado:String ,pc:Computador, mem:Double){
-        bd.update(
-            """
+        try{
+            server.update(
+                """
             insert into ocorrencia(fkProcesso,fkDispositivo, memoria) values
-            ((select idProcesso from processosBloqueados where nome = "$dado"), ${pc.idDispositivo}, $mem)
+            ((select idProcesso from processosBloqueados where nome = '$dado'), ${pc.idDispositivo}, $mem)
             """
-        )
-
+            )
+        } catch(exception:Exception) {
+            println("Falha ao executar o SQLserver, salvando no bd mysql. erro: ${exception}")
+            bd.update(
+                """
+            insert into ocorrencia(fkProcesso,fkDispositivo, memoria) values
+            (0, ${pc.idDispositivo}, $mem)
+            """
+            )
+        }
     }
     fun processosBloqueados(pc: Computador): List<String> {
         var processos = mutableListOf<String>()
-        val proc = bd.query(
-            """
+        try {
+            val proc = server.query(
+                """
                 select * from processosBloqueados where fkEmpresa = ${pc.fkempresa}
                 """, BeanPropertyRowMapper(Processo::class.java)
-        )
-        proc.forEach {
-            processos += it.nome
+            )
+            proc.forEach {
+                processos += it.nome
+            }
+        } catch(exception:Exception){
+            println("Falha ao executar o select de processos Bloqueados!!")
         }
         return processos
     }
