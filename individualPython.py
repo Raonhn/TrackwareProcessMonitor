@@ -1,3 +1,5 @@
 import psutil
-mem = psutil.virtual_memory()[2]
+usada = psutil.virtual_memory().used
+total = psutil.virtual_memory().total
+mem = (usada / total) * 100
 print(mem)

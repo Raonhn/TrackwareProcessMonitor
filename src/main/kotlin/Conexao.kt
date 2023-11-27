@@ -2,10 +2,10 @@ import org.apache.commons.dbcp2.BasicDataSource
 import org.springframework.jdbc.core.JdbcTemplate
 
 class Conexao {
-    var serverName = "localhost"
+    var serverName = "localhost:3306"
     var mydatabase = "trackware"
-    var username = "testes"
-    var password = "12345678"
+    var username = "root"
+    var password = "Trackware000"
     lateinit var bd:JdbcTemplate
     fun conectar(): JdbcTemplate {
         val dataSource = BasicDataSource()
