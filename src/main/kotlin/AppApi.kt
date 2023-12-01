@@ -54,7 +54,7 @@ fun api() {
                 }
             }
             3 -> {
-                val alertas = ScriptPython.criarPythonAlertas()
+                val alerta = ScriptPython.criarPythonAlertas(pc)
                 Runtime.getRuntime().addShutdownHook(Thread {
                     println("O monitoramento de processos foi finalizado")
                 })
@@ -69,7 +69,7 @@ fun api() {
                                     val respostaMem = ScriptPython.executarScript(arquivo)
                                     encerrar(it.pid.toString(), so)
                                     bd.ocorrencia(process, pc, respostaMem)
-                                    ScriptPython.executarScript2(alertas)
+                                    ScriptPython.executarScript2(alerta)
                                 }
                             }
                         }
@@ -84,7 +84,7 @@ fun api() {
                                     val respostaMem = ScriptPython.executarScript(arquivo)
                                     encerrar(it.pid.toString(), so)
                                     bd.ocorrencia(process, pc, respostaMem)
-                                    ScriptPython.executarScript2(alertas)
+                                    ScriptPython.executarScript2(alerta)
                                 }
                             }
                         }

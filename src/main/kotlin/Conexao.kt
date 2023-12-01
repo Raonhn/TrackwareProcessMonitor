@@ -4,8 +4,8 @@ import org.springframework.jdbc.core.JdbcTemplate
 class Conexao {
     var serverName = "localhost:3306"
     var mydatabase = "trackware"
-    var username = "root"
-    var password = "Trackware000"
+    var username = "Nathan"
+    var password = "Lfng29131021@"
     lateinit var bd:JdbcTemplate
     fun conectar(): JdbcTemplate {
         val dataSource = BasicDataSource()
@@ -26,7 +26,7 @@ class Conexao {
             fkProcesso int,
             fkDispositivo int,
             foreign key (fkDispositivo) references dispositivo(idDispositivo),
-            memoria float,
+            cpu float,
             dtHora datetime default current_timestamp
         );
     """)

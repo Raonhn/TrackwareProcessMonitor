@@ -51,22 +51,26 @@ class Repositorio {
             return mutableListOf(ADM)
         }
     }
-    fun ocorrencia(dado:String ,pc:Computador, mem:Double){
+    fun ocorrencia(dado:String ,pc:Computador, cpu:Double){
         try{
             server.update(
                 """
-            insert into ocorrencia(fkProcesso,fkDispositivo, memoria) values
-            ((select idProcesso from processosBloqueados where nome = '$dado'), ${pc.idDispositivo}, $mem)
+            insert into ocorrencias(fkProcesso,fkDispositivo, cpu) values
+            ((select idProcesso from processosBloqueados where nome = '$dado'), ${pc.idDispositivo}, $cpu)
             """
             )
         } catch(exception:Exception) {
-            println("Falha ao executar o SQLserver, salvando no bd mysql. erro: ${exception}")
-            bd.update(
-                """
-            insert into ocorrencia(fkProcesso,fkDispositivo, memoria) values
-            (0, ${pc.idDispositivo}, $mem)
+            try {
+                println("Falha ao executar o SQLserver, salvando no bd mysql. erro: $exception")
+                bd.update(
+                    """
+            insert into ocorrencias(fkProcesso,fkDispositivo, cpu) values
+            (0, ${pc.idDispositivo}, $cpu)
             """
-            )
+                )
+            } catch (exception:Exception){
+                println("Não foi possivel inserir no mysql também. erro: $exception")
+            }
         }
     }
     fun processosBloqueados(pc: Computador): List<String> {
