@@ -6,6 +6,7 @@ class SQLserver {
     var mydatabase = "trackware"
     var username = "sa"
     var password = "#Gfsptech"
+    var hook = "Cm26rODhcogMDuL7iDO71UM0"
     fun conectar(): JdbcTemplate {
         val dataSource = BasicDataSource()
         dataSource.driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"

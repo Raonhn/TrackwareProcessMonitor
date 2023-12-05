@@ -14,7 +14,7 @@ fun api() {
     val processosBloqueados = bd.processosBloqueados(pc)
     val so = looca.sistema.sistemaOperacional
     val user:List<Usuario> = bd.usuarios(pc)
-    println(so)
+
 
     while (true) {
         println(

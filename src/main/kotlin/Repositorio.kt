@@ -74,7 +74,7 @@ class Repositorio {
         }
     }
     fun processosBloqueados(pc: Computador): List<String> {
-        var processos = mutableListOf<String>()
+        val processos = mutableListOf<String>()
         try {
             val proc = server.query(
                 """
@@ -85,7 +85,7 @@ class Repositorio {
                 processos += it.nome
             }
         } catch(exception:Exception){
-            println("Falha ao executar o select de processos Bloqueados!!")
+            println("Falha ao executar o select de processos Bloqueados!! $exception")
         }
         return processos
     }
