@@ -16,6 +16,9 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ Site com a dashboard Individual: https://github.com/Sprint04/Site - Arquivos com o nome Nathan e associados.
 
+⨠ Link do slack: https://join.slack.com/t/trackware-grupo/shared_invite/zt-27fu1dwhu-EtT3uEzSCqbDdS932Svq8Q - Convite valido até dia 20/12/2023
+
+
 ## Foco
 
 ⨠ O foco é monitorar programas no computador que o cliente definir que não quer rodar na maquina, após isso ele deve ser bloqueado de ser executado, assim preservando hardware e recursos da maquina para evitar lentidões e problemas com distrações no serviço ou semelhantes.
