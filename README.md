@@ -45,4 +45,6 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ Importante: A API do grupo Trackware deve ser executado primeiro, pois é necessario que haja a maquina cadastrada no sistema para o individual funcionar, assim como todos os outros.
 
+⨠ Não se esqueça que você precisa estar no grupo correto do slack para receber mensagens, caso não esteja, pelo menos um deve ser configurado para receber (Como configurar no Readme do EntregaveisFinal).
+
 
