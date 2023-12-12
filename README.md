@@ -4,6 +4,13 @@
 # TrackWare System
 Repostisório que contém o individual do Nathan Ribeiro de Araujo Oliveira RA:03231019.
 
+Por favor, leia todo esse Readme antes de prosseguir para links.
+
+## Itens associados
+
+⨠ Repositorio EntregaveisFinal: https://github.com/Sprint04/EntregaveisFinal
+
+⨠ Repositorio Individual do grupo com JAR Executavel:
 
 ## Foco
 
@@ -17,4 +24,10 @@ Repostisório que contém o individual do Nathan Ribeiro de Araujo Oliveira RA:0
 
 ⨠ Esse projeto funciona melhor em windows, porem funciona também em linux.
 
-⨠ 
+⨠ No repositorio EntregaveisFinal
+
+## Requisitos para rodar o individual
+
+⨠ Para ser executado primeiramente precisa das configurações de banco do grupo que estão diponiveis no repositorio EntregaveisFinal.
+
+
