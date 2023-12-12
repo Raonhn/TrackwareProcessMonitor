@@ -14,6 +14,8 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ Organização Trackware (Grupo 9): https://github.com/Sprint04
 
+⨠ Site com a dashboard Individual: https://github.com/Sprint04/Site - Arquivos com o nome Nathan e associados.
+
 ## Foco
 
 ⨠ O foco é monitorar programas no computador que o cliente definir que não quer rodar na maquina, após isso ele deve ser bloqueado de ser executado, assim preservando hardware e recursos da maquina para evitar lentidões e problemas com distrações no serviço ou semelhantes.
@@ -28,10 +30,14 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ No repositorio EntregaveisFinal a versão mais atualizada desse programa e inclusive o que foi apresentado está lá com tudo 100%, em caso de erro com as coisas desse repositorio, a pasta nathanIndividual lá possui esses arquivos em sua magnetude, isso pois aquele repositorio deveria conter todos os individuais e o projeto completo do grupo.
 
+⨠ Esta tudo certo mas meu grafico não aparece oque fazer? Pode ser problema de tamanho de tela, assim como problemas de css, a tela pode resultar em alguns problemas entre eles esse de não aparecer os dados no grafico, apenas aperte no nome na legenda 2 vezes que as linhas devem aparecer certinho.
+
 ## Requisitos para rodar o individual
 
 ⨠ Para ser executado primeiramente precisa das configurações de banco do grupo que estão diponiveis no repositorio EntregaveisFinal.
 
 ⨠ Não esqueça de verificar se tudo esta corretamente colocado como server e banco de dados, etc, para que o programa rode perfeitamente.
+
+⨠ Para que o programa realmente funciona não se esqueça de adicionar programas para ele bloquear, se não ele somente existirá sem fazer nada.
 
 
