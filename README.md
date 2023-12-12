@@ -10,7 +10,9 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ Repositorio EntregaveisFinal: https://github.com/Sprint04/EntregaveisFinal
 
-⨠ Repositorio Individual do grupo com JAR Executavel:
+⨠ Repositorio Individual do grupo com JAR Executavel: https://github.com/Sprint04/Individual-Nathan
+
+⨠ Organização Trackware (Grupo 9): https://github.com/Sprint04
 
 ## Foco
 
