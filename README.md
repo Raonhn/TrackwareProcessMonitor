@@ -26,10 +26,12 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ Esse projeto funciona melhor em windows, porem funciona também em linux.
 
-⨠ No repositorio EntregaveisFinal
+⨠ No repositorio EntregaveisFinal a versão mais atualizada desse programa e inclusive o que foi apresentado está lá com tudo 100%, em caso de erro com as coisas desse repositorio, a pasta nathanIndividual lá possui esses arquivos em sua magnetude, isso pois aquele repositorio deveria conter todos os individuais e o projeto completo do grupo.
 
 ## Requisitos para rodar o individual
 
 ⨠ Para ser executado primeiramente precisa das configurações de banco do grupo que estão diponiveis no repositorio EntregaveisFinal.
+
+⨠ Não esqueça de verificar se tudo esta corretamente colocado como server e banco de dados, etc, para que o programa rode perfeitamente.
 
 
