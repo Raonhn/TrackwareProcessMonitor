@@ -43,4 +43,6 @@ Por favor, leia todo esse Readme antes de prosseguir para links.
 
 ⨠ Para que o programa realmente funciona não se esqueça de adicionar programas para ele bloquear, se não ele somente existirá sem fazer nada.
 
+⨠ Importante: A API do grupo Trackware deve ser executado primeiro, pois é necessario que haja a maquina cadastrada no sistema para o individual funcionar, assim como todos os outros.
+
 
