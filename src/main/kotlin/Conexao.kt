@@ -5,7 +5,7 @@ class Conexao {
     var serverName = "localhost:3306"
     var mydatabase = "trackware"
     var username = "Nathan"
-    var password = "Lfng29131021@"
+    var password = "12345678"
     lateinit var bd:JdbcTemplate
     fun conectar(): JdbcTemplate {
         val dataSource = BasicDataSource()
